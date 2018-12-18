@@ -1,0 +1,72 @@
+{
+	"name": "Docker Compose Network",
+	"x-networkId": "not-important",
+	"x-type": "hlfv1",
+	"description": "Connection Profile for an Hyperledger Fabric network on a local machine",
+	"version": "1.0.0",
+	"client": {
+		"organization": "org1.kevin.chaindesk.cn",
+		"credentialStore": {
+			"path": "../hfc-key-store"
+		}
+	},
+	"channels": {
+		"kevinchaindesk": {
+			"orderers": [
+				"fabric-orderer"
+			],
+			"peers": {
+				"fabric-peer-org1": {
+					"x-chaincode": {}
+				}
+			},
+			"chaincodes": [
+				"marbles:v4"
+			],
+			"x-blockDelay": 10000
+		}
+	},
+	"organizations": {
+		"org1.kevin.chaindesk.cn": {
+			"mspid": "org1.kevin.chaindesk.cn",
+			"peers": [
+				"fabric-peer-org1"
+			],
+			"certificateAuthorities": [
+				"fabric-ca"
+			],
+			"x-adminCert": {
+				"path": "../artifacts/crypto-config/peerOrganizations/org1.kevin.chaindesk.cn/users/Admin@org1.kevin.chaindesk.cn/msp/admincerts/Admin@org1.kevin.chaindesk.cn-cert.pem"
+			},
+			"x-adminKeyStore": {
+				"path": "../artifacts/crypto-config/peerOrganizations/org1.kevin.chaindesk.cn/users/Admin@org1.kevin.chaindesk.cn/msp/keystore/"
+			}
+		}
+	},
+	"orderers": {
+		"fabric-orderer": {
+			"url": "grpc://localhost:7050"
+		}
+	},
+	"peers": {
+		"fabric-peer-org1": {
+			"url": "grpc://localhost:7051",
+			"eventUrl": "grpc://localhost:7053"
+		}
+	},
+	"certificateAuthorities": {
+		"fabric-ca": {
+			"url": "http://localhost:7054",
+			"httpOptions": {
+				"verify": true
+			},
+			"registrar": [
+				{
+					"enrollId": "admin",
+					"enrollSecret": "adminpw"
+				}
+			],
+			"caName": null
+		}
+	}
+}
