@@ -1,0 +1,80 @@
+#txStoryPanel
+
+	span.fa.fa-close.closeTxStory#closeTxStoryPos
+
+	//----------------- Step 1 Content
+	.txStepWrap#txStep1.inactiveStep
+		.txStatusWrap
+			.txStatus
+		.txLegend 构建交易提案
+		.txStoryWrap
+			.marbleWrap
+				div.ball#proposeMarbleStable.hideBorders.leftPos(title="Your marble tx")
+				div.ball#proposeMarble.hideBorders.leftPos
+				div.ball#marbleBorderTop.leftPos
+				div.ball#marbleBorderBottom.leftPos
+				div.ball#marbleBorderLeft.leftPos
+				div.ball#marbleBorderRight.leftPos
+		.txDescription
+			span 需要在应用程序中完成对交易进行签名并打包为提案. 
+			span 
+
+	//----------------- Step 2 Content
+	.txStepWrap#txStep2.inactiveStep
+		.txStatusWrap
+			.txStatus
+		.txLegend 交易背书
+		.txStoryWrap 
+			.marbleWrap
+				div.ball#endorseMarbleStable(title="Your marble tx")
+					span.fa.fa-check
+				div.ball#endorseMarble
+					span.fa.fa-check
+		.txDescription
+			span 接下来，应用程序将交易提案发送到Peer进行背书.
+			span Peer将模拟事务，验证提案，然后签署提案(背书). 
+			span 然后它被返回给应用程序.
+
+	//----------------- Step 3 Content
+	.txStepWrap#txStep3.inactiveStep
+		.txStatusWrap
+			.txStatus
+		.txLegend 排序
+		.txStoryWrap
+			#orderBoxStable 
+				span.ball.ordererMarbles.hideMe(title="Another marble tx")
+					span.fa.fa-check
+				span.ball.ordererMarbles.hideMe(title="Your marble tx")
+					span.fa.fa-check
+				span.ball.ordererMarbles.hideMe(title="Another marble tx")
+					span.fa.fa-check
+				#orderBox Block
+		.txDescription
+			span 然后，应用程序会将背书确认完成的交易提案发送给Orderer. 
+			span Orderer将对整个网络中的事务进行排序. 
+			
+	//----------------- Step 4 Content
+	.txStepWrap#txStep4.inactiveStep
+		.txStatusWrap
+			.txStatus
+		.txLegend 验证 & 提交
+		.txStoryWrap 
+			#commitBoxStable(title="Block")
+				span.fa.fa-search
+		.txDescription
+			span 将包含事务的区块从Orderer发送到Peer. 
+			span 最后通过Peer验证，提交到Peer的分类帐中 
+
+	div
+		.hint * 注意，为了演示的目的，我们将这个过程的速度减慢了
+
+	#txStoryErrorWrap 
+		span.fa.fa-warning(style="fill: #000;")
+		span#txStoryErrorTxt &nbsp;
+
+	//----------------- All done
+	.stepHelpWrap#doneTxStep
+		h2 调用完成
+		br
+		br
+		button(type="button").closeTxStory 关闭

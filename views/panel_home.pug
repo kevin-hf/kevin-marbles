@@ -1,0 +1,33 @@
+#homePanel.panel
+	div
+		#tips
+			span 提示: 简单地从一个用户拖拽到另一个用户
+
+		#ownerWrap
+			div#toolbarWrap
+				.bottomAlign
+					input(type="text" placeholder="Search Marble Owners" style="margin-left: 0; border-radius:2px;")#searchUsers.longer
+					span.hint(style="margin-left: 10px; font-size: 16px;") 
+						span#foundUsers 0
+						span /
+						span#totalUsers 0
+
+				button(disabled="disabled")#showStartupPanel
+					span.fa.fa-gears
+					span &nbsp; 启动帮助
+					
+				span &nbsp;&nbsp;
+
+				button(disabled="disabled")#showSettingsPanel
+					span.fa.fa-gear
+					span &nbsp; 设置
+				
+				#trashbin.sortable.innerMarbleWrap
+					div.fa.fa-trash-o.fa-3x(style="vertical-align: middle;")
+					span &nbsp;
+					div#trashText 拖放Marble以移除
+			
+
+
+		#allUserPanelsWrap
+			#appStartingText 连接中...

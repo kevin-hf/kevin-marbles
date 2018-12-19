@@ -1,0 +1,285 @@
+#stepsWrap {
+  display: block;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 25px;
+  display: none; }
+
+#detailsWrap {
+  display: block;
+  width: 100%;
+  text-align: center;
+  display: none; }
+
+#stepWelcomeWrap {
+  text-align: center; }
+
+#breakdownWrap {
+  text-align: left;
+  width: 300px;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px; }
+
+#rightSide {
+  display: inline-block;
+  text-align: left;
+  line-height: 25px; }
+
+.headingText {
+  font-size: 20px; }
+
+.warningWrap {
+  display: none;
+  font-size: 14px;
+  text-align: center;
+  background: #2d2c2b;
+  color: #fff;
+  padding: 10px;
+  border-left: #fff 4px solid;
+  position: relative;
+  border-radius: 3px;
+  width: 382px;
+  line-height: 18px;
+  margin: auto; }
+
+#dateChecked {
+  display: hidden;
+  font-size: 15px;
+  position: absolute;
+  top: 60px; }
+
+#failedSetup {
+  text-align: left; }
+
+.chooseTxt {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 5px; }
+
+.guideButtons, .guideButtons:hover, .guideButtons:disabled:hover {
+  padding: 20px 60px;
+  font-size: 15px; }
+
+.guideHints {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 12px;
+  width: 175px;
+  line-height: 18px; }
+
+.oneStepWrap {
+  display: inline-block;
+  margin: 0;
+  text-align: center; }
+
+.oneStepWrap:hover {
+  cursor: pointer;
+  color: #2eb9d6; }
+
+.inactive:hover {
+  cursor: not-allowed;
+  color: inherit; }
+
+.stepDivide {
+  display: inline-block;
+  border-bottom: 1px #fff solid;
+  height: 16px;
+  margin: 0 6px;
+  margin-top: -2px;
+  width: 55px;
+  vertical-align: top; }
+
+.stepIcon {
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 1000px;
+  border: 1px #fff solid;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center; }
+
+.onStep .stepIcon {
+  background: #fff; }
+
+.successfulStepIcon .stepIcon, .successfulStepIcon .stepDivide {
+  color: #52b152;
+  border-color: #52b152; }
+
+.errorStepIcon .stepIcon, .errorStepIcon .stepDivide {
+  color: #ff5b5b;
+  border-color: #ff5b5b; }
+
+.successfulStepIcon.onStep .stepIcon {
+  background: #52b152; }
+
+.errorStepIcon.onStep .stepIcon {
+  background: #ff5b5b; }
+
+.onStep .stepIcon {
+  color: #343d48; }
+
+#stepsTitle {
+  font-size: 13px;
+  color: #646b73;
+  margin-top: 10px; }
+
+.loadingdiv {
+  display: none; }
+
+.inactive .stepIcon, .inactive .stepDivide {
+  color: #555;
+  border-color: #555; }
+
+.greenMe {
+  color: #52b152; }
+
+.redMe {
+  color: #ff5b5b; }
+
+.stepWrap {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  line-height: 24px;
+  width: 100%; }
+
+.stepDescription {
+  font-size: 15px;
+  text-align: left; }
+
+.successStep {
+  color: #52b152;
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 14px;
+  opacity: 0; }
+
+.failureStep {
+  color: #ff5b5b;
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 14px;
+  display: none; }
+
+.nextStep {
+  display: none;
+  float: right; }
+
+.runStep {
+  float: right;
+  margin-right: 20px; }
+
+.success .successStep {
+  opacity: 1; }
+
+.success .runStep {
+  display: none; }
+
+.success .nextStep {
+  display: inline-block; }
+
+.errorStepContent .failureStep {
+  display: block; }
+
+.settingsExpand {
+  color: #fff;
+  padding: 4px;
+  text-align: left;
+  padding-left: 17px;
+  cursor: pointer;
+  font-size: 13px; }
+
+.settingsExpand:hover {
+  color: #ccc; }
+
+.settingsContent {
+  margin: 16px;
+  display: none; }
+
+.startupWrap {
+  color: #5b6169;
+  border: 1px #5b6169 solid;
+  border-radius: 3px;
+  margin: 20px 0; }
+
+#registerOwnersInputPanel, #registerOwners {
+  display: block; }
+
+.showMoreDetails {
+  color: #646b73;
+  float: left;
+  cursor: pointer; }
+
+.showMoreDetails:hover {
+  color: #ccc; }
+
+.moreDetails {
+  display: none;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  clear: both;
+  color: #959ca4; }
+
+.stepHeader {
+  font-weight: 600;
+  height: 32px;
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-align: left; }
+
+.stepInputLegend {
+  display: inline-block;
+  text-align: right;
+  width: 150px;
+  font-size: 13px;
+  margin-right: 5px;
+  color: #fff; }
+
+@keyframes slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0); } }
+
+.slideOutDown {
+  animation-name: slideOutDown;
+  animation-duration: 0.8s; }
+
+.settingstooltip {
+  position: relative;
+  display: inline-block; }
+
+.settingstooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: #50565f;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  font-size: 13.5px;
+  left: -151px;
+  top: -57px;
+  line-height: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.settingstooltip:hover .tooltiptext {
+  visibility: visible; }
+
+.settingstooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #50565f transparent transparent transparent; }

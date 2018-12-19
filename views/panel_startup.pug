@@ -1,0 +1,272 @@
+#startUpPanel.hideMe
+
+	span.fa.fa-close#closeStartUp.closeStartUp
+
+	#stepWelcomeWrap
+		#rightSide
+			.headingText
+				span 欢迎来到Hyperledger Fabric;
+				strong Marbles&nbsp;
+				span 演示!
+
+			br
+			p.centerText
+				span.chooseTxt 应该如何设置?
+
+				br
+
+				span.hint.guideHints(style="margin-left: -170px;")
+					span 已经是Fabric专家了?默认设置在这里.&nbsp;&nbsp;
+					span.fa.fa-arrow-right
+				button.guideButtons#instantSetup
+					span.fa.fa-rocket &nbsp;&nbsp;&nbsp;
+					span 快速
+				span &nbsp;&nbsp;&nbsp;
+				button.guideButtons#startSteps
+					span.fa.fa-gears &nbsp;&nbsp;&nbsp;
+					span 指南
+				span.hint.guideHints
+					span.fa.fa-arrow-left
+					span &nbsp;&nbsp;希望了解Fabric或自定义设置?
+				br
+				br
+
+				#wait4cc.warningWrap
+					p 链代码仍在启动中。需要等待...
+					#dateChecked 检查
+
+				#failedSetup.warningWrap
+					p
+						span.fa.fa-bug &nbsp;&nbsp;&nbsp;
+						span 配置或网络有问题.&nbsp;
+						span 确认&nbsp;
+						strong 指南
+						spansetup &nbsp;设置以纠正.
+
+			div.centerText
+				include ./template/loading.pug
+
+	//----------------- Step Navigation
+	#stepsWrap
+		.oneStepWrap(stepid="step1").successfulStepIcon.onStep
+			.stepIcon.bounce 1
+		.oneStepWrap(stepid="step2")
+			.stepDivide
+			.stepIcon 2
+		.oneStepWrap.inactive(stepid="step3")
+			.stepDivide
+			.stepIcon 3
+		.oneStepWrap.inactive(stepid="step4")
+			.stepDivide
+			.stepIcon 4
+		.oneStepWrap.inactive(stepid="step5")
+			.stepDivide
+			.stepIcon 5
+		#stepsTitle 共有5个步骤要完成。单击一个步骤进行跳转.
+
+
+	#detailsWrap
+
+		//----------------- Step 1 Content [Check Settings + Welcome]
+		#step1.stepWrap.success
+			.stepHeader
+				span.fa.fa-gear
+				span &nbsp;&nbsp;检查连接概要数据
+			.stepDescription
+				span 第一步是检查连接概要JSON，因为很容易出错.
+				br
+				if bag.using_env
+					span 您的设置正在使用连接概要文件的环境变量.
+					span 如果你需要编辑这个，你需要重新启动Marbles.
+				else
+					span 被检查的文件是:&nbsp;
+					span.backgroundMe /config/#{bag.config_filename}
+					span &nbsp;and&nbsp;
+					span.backgroundMe /config/#{bag.cp_filename}
+					span &nbsp;.
+
+				br
+				br
+				span 结果如下!
+
+			.failureStep
+				p
+					span 看来配置文件有问题.
+					span 可以从服务器控制台中查看更多信息.
+				br
+			.successStep Step 1 完成
+			br
+			br
+			button.nextStep(nextstepid="step2") 下一步
+
+		//----------------- Step 2 Content [Enroll Admin]
+		#step2.stepWrap.hidden
+			.stepHeader
+				span.fa.fa-user
+				span &nbsp;&nbsp;Enrolling Admin
+			.stepDescription
+				span 接下来，我们尝试让您成为管理员.
+				span 此步骤应该与您的证书颁发机构(CA)联系，从您的连接配置文件中提供&nbsp;
+				span.backgroundMe 注册ID
+				span &nbsp;与&nbsp;
+				span.backgroundMe 注册密钥
+				br
+
+			include ./template/loading.pug
+
+			.failureStep
+				p 对不起，我们无法根据CA注册管理员.
+				p 编辑下面的设置再试一次.
+
+			.startupWrap
+				.settingsExpand
+					span.fa.fa-plus-square
+					span &nbsp;&nbsp;JSON Settings
+
+				.settingsContent
+					.stepInputLegend
+						span CA's
+						span.backgroundMe api_url
+					input(type="text" placeholder="CA ex: 192.168.99.100:8888" name="caUrl" value=bag.creds.ca).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是到达证书颁发机构包括协议和端口的主要HTTP URL.
+					br
+					.stepInputLegend
+						span.backgroundMe 注册ID
+					input(type="text" placeholder="Enroll Id" name="enrollId" value=bag.creds.admin_id).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是您的CA的有效注册id。它应该已经在CA上注册.
+					br
+					.stepInputLegend
+						span.backgroundMe 注册密钥
+					input(type="text" placeholder="Enroll Secret" name="enrollSecret" value=bag.creds.admin_secret).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 注册密钥与在CA上注册的注册ID相匹配.
+
+			.successStep 第二步完成
+			button.nextStep(nextstepid="step3") 下一步
+			button.runStep(stepid="step2" nextstepid="step3")#enrollAdmin 再试一次
+
+			.showMoreDetails 为什么这很重要?
+			.moreDetails
+				span 如果成功，应用程序将下载注册证书.
+				span 该证书将对未来的Marble交易进行认证.
+				span 没有它，我们就无法创建事务.
+
+		//----------------- Step 3 Content [Find Chaincode]
+		#step3.stepWrap.hidden
+			.stepHeader
+				span.fa.fa-file-text
+				span &nbsp;&nbsp;查找链码
+			.stepDescription
+				span 现在我们需要在您的通道上找到链码.
+				span 您的连接配置文件要求检查通道;
+				span.backgroundMe #{bag.creds.channel}
+				span &nbsp;用于命名的链码&nbsp;
+				span.backgroundMe #{bag.creds.chaincode_id}
+				span &nbsp;.
+				br
+
+			include ./template/loading.pug
+
+			.failureStep
+				p 找不到链码
+				p 编辑下面的设置再试一次
+				
+			.startupWrap
+				.settingsExpand
+					span.fa.fa-plus-square
+					span &nbsp;&nbsp;JSON设置
+
+				.settingsContent
+					.stepInputLegend
+						span Orderer's
+						span.backgroundMe discovery_url
+					input(type="text" placeholder="Orderer ex: 192.168.99.100:5151" name="ordererUrl" value=bag.creds.orderer).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是到达您的Orderer的包括协议和端口的主要gRPC URL.你会向这里发送Marbles交易订单
+					br
+					.stepInputLegend
+						span Peer's
+						span.backgroundMe discovery_url
+					input(type="text" placeholder="Peer ex: 192.168.99.100:7051" name="peerUrl" value=bag.creds.peer).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是到达您的Peer的包括协议和端口的主要gRPC URL.你会把Marbles交易发到这里来做背书
+					br
+					.stepInputLegend
+						span.backgroundMe channel
+					input(type="text" placeholder="Channel Name" name="channelId" value=bag.creds.channel).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是您在区块链网络上创建的通道的名称.
+					br
+					.stepInputLegend
+						span.backgroundMe chaincode_id
+					input(type="text" placeholder="Chaincode ID" name="chaincodeId" value=bag.creds.chaincode_id).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是实例化链码的名称。如: marbles.
+					br
+					.stepInputLegend
+						span.backgroundMe chaincode_version
+					input(type="text" placeholder="Chaincode ID" name="chaincodeVersion" value=bag.creds.chaincode_version).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 这是实例化链码的版本. 如: v4.
+
+			.successStep 第三步完成
+			br
+			button.nextStep(nextstepid="step4") 下一步
+			button.runStep(stepid="step3" nextstepid="step4")#findCcButton 再试一次
+
+			.showMoreDetails 为什么这很重要?
+			.moreDetails
+				span 网络上的每个通道都有自己的分类帐来存储交易.
+				span 当我们的链代码在通道上运行时，能够创建和存储这些事务.
+				span 通道上可能有其他类型的活动，但我们不会关注它们.
+				br
+				br
+				span 链代码本身就是用GoLang编写的代码.
+				span 它定义了资产和Marble转移的规则.
+				span 我们的代码事务将创建和修改marble、marble所有者和marble公司.
+				span 在链接代码在通道上实例化之前，我们不能使用这个应用程序.
+
+		//----------------- Step 4 Content [Register Marble Owners]
+		#step4.stepWrap.hidden
+			.stepHeader
+				span.fa.fa-group
+				span &nbsp;&nbsp;创建资产
+			.stepDescription
+				span 几乎实现了!
+				span 作为一家marbles贸易公司，你可以带上新的marble所有者.
+				span 这些marble所有者代表您的用户基础.
+				br
+				br
+				span 这个步骤将创建marble拥有者且每个拥有者拥有3个marble.
+
+			include ./template/loading.pug
+
+			.startupWrap
+				#registerOwnersInputPanel.settingsContent
+					.stepInputLegend
+						span 公司
+					input(type="text" value=bag.marble_company disabled="disabled").longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 编辑配置文件并重新启动应用程序以更改公司名称.
+					br
+					.stepInputLegend
+						span Marble 拥有者
+					input(type="text" placeholder="bob, bill, amy" name="marbleOwners" value=bag.creds.marble_owners).longer
+					span.fa.fa-question-circle.settingstooltip
+						span.tooltiptext 输入要创建的marble拥有者的名称。使用逗号进行分隔.
+
+			.successStep Step 4 Complete
+			button.nextStep(nextstepid="step5" style="display: inline-block") 跳过这一步
+			button.runStep(stepid="step4" nextstepid="step5")#registerOwners 创建
+
+		//----------------- Step 5 Content [Finished]
+		#step5.stepWrap.hidden.success
+			span.fa.fa-smile-o.fa-3x
+			.stepDescription(style="text-align:center")
+				span 您的Marbles应用程序可以使用了!
+				br
+				br
+
+			button(type="button").closeStartUp 确定

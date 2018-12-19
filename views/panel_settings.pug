@@ -1,0 +1,48 @@
+#settingsPanel
+
+	span.fa.fa-close#closeSettings
+
+	.settingsWrap
+		h3 描述模式
+		hr
+		p 描述模式支持逐步遍历调用过程.
+		p 如果你是新Marble或Fabric,启用描述模式. 
+
+		br
+		br
+		p 
+			span 描述模式
+			span#storyStatus.storyOn on
+		p
+			button(type="button")#disableStoryMode 禁用
+			span &nbsp;&nbsp;
+			button(type="button" disabled="disabled")#enableStoryMode 启用
+	
+	.settingsWrap(hidden)
+		h3 
+			span 背书
+			span#construction (work in progress... does not work yet)
+		hr
+		p 
+			span 要使提案获得成功，必须得到一些Peers的背书. 
+			span 确切数量的背书将取决于您的网络的策略. 
+			span 如果你是Marble或Fabric的新手，那么选择第一背书人. 
+		br
+		br
+		p 下面的每一位签过名的背书人都将收到Marble提案.
+		
+		.settingPeersWrap
+			p 
+				span 背书 1
+				input(type="text" placeholder="Peer URL" name="peer1").longer
+				input(type="checkbox" name="peer1")
+
+			p 
+				span 背书 2
+				input(type="text" placeholder="Peer URL" name="peer2").longer
+				input(type="checkbox" name="peer2")
+
+		p
+			button(type="button" disabled="disabled") 添加背书
+
+	

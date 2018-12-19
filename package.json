@@ -21,6 +21,13 @@
 		"winston": "2.4.*",
 		"ws": "1.1.5"
 	},
+	"devDependencies": {
+		"gulp": "3.9.*",
+		"gulp-sass": "*",
+		"gulp-concat": "*",
+		"gulp-clean-css": "*",
+		"gulp-rename": "*"
+	},
 	"engines": {
 		"node": "^6.2.0"
 	},

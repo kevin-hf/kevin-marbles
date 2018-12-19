@@ -1,0 +1,25 @@
+extends ./layout.pug
+	
+	
+block custom_header
+	// --------------- Header -------------- //
+	script(type='text/javascript').
+		$(document).ready(function(){
+			
+		});
+		
+		
+block navpanel
+	// --------------- Navigation Bar  -------------- //
+	#logo Marbles P?
+	
+	
+block content
+	// --------------- Main Stuff  -------------- //
+	#contentPanel
+		
+		h1 Error: #{bag.error.status}
+		center
+			h2 #{bag.error.msg}
+			
+		hr

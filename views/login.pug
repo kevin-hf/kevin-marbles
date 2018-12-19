@@ -1,0 +1,72 @@
+extends ./template/layout.pug
+	
+	
+block custom_header
+	// --------------- Header -------------- //
+	script(type='text/javascript').
+		$(document).ready(function(){
+
+		});
+		
+		
+block navpanel
+	// --------------- Navigation Bar  -------------- //
+	include ./template/nav.pug
+	
+	
+block content
+	// --------------- Main Stuff  -------------- //
+	#notificationWrap
+	
+	#contentPanel
+		
+		// --------------- Welcome Panel
+		#welcomePanel
+			h2(style="font-weight: 600;") 欢迎来到Marbles演示程序
+
+			#adminText
+				span 再次问好 
+				span#loginCompany #{bag.marble_company} 
+				span admin !
+
+			p 
+				span 应用程序允许您在超分类帐本结构区块链上模拟一个简单的资产交易.  
+				span 您可以连接多个Peer来与更大的Marble用户群进行交易. 
+				span 在这个应用程序中，您可以: 
+			
+			#split1x3Wrap
+				.split1x3
+					.welcomeTitle
+						span 交易
+						//br
+							span 资产
+					br
+					.blub1x3 将资产(marbles)转移到marbles用户基础上
+					img(src="/imgs/welcome_img1.png").welcomeImg
+				.split1x3
+					.welcomeTitle
+						span 创建
+						//br
+							span Marble
+					br
+					.blub1x3 创建新资产 (Marble)
+					img(src="/imgs/welcome_img2.png").welcomeImg
+				.split1x3
+					.welcomeTitle
+						span 证明
+						//br
+							span 所有权
+					br
+					.blub1x3 验证marble事务
+					img(src="/imgs/welcome_img3.png").welcomeImg
+			br
+			br
+
+
+
+		// --------------- Login Panel
+		form#loginPanel(method="POST" action="#")
+			p 确认
+			hr
+			input(type="text" placeholder="username" value="admin" name="username")
+			button(type="submit") 登录

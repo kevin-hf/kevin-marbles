@@ -1,0 +1,93 @@
+@import 'color_theme';
+
+//block thing
+#blockWrap{
+	position:relative;
+	margin: 15px 25px;
+}
+$block_size: 32px;
+.block{
+	line-height: $block_size;
+	color:$hi_color2;
+	text-align: center;
+	position: absolute;
+	top:0;
+	left:100%;
+	height: $block_size;
+	width: $block_size;
+	border-radius:2px;
+	opacity: 5;
+	border:$hi_color2 solid 1px;
+	font-size:12px;
+	transition: background-color 0.5s ease;
+	font-weight: bold;
+}
+.thousands{
+	font-size: 9px;
+}
+.million{
+	font-size: 7px;
+}
+.lastblock{
+	transition: background-color 1s ease;
+	background: $hi_color2;
+	color: $acc_color1;
+	border-color: $hi_color2;
+}
+
+
+#blockLegend{
+	color: $acc_color3;
+	margin-right: 10px;
+	padding: 21px;
+	position: relative;
+	left: -26px;
+	bottom: 13px;
+	font-size: 18px;
+	background: $acc_color1;
+	z-index: 9;
+	width: 66px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: $main_color;
+	color: $acc_color1-5;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 2px;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 1s;
+	line-height: 16px;
+	z-index: 9;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: $main_color transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
