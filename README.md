@@ -6,7 +6,7 @@
 
 此应用程序将演示如何利用 Hyperledger Fabric 在许多Marble所有者之间转移Marble。 我们将在 Node.js 中使用一些 GoLang 代码完成此任务。 该应用程序的后端将在Hyperledger Fabric网络中运行的 GoLang 代码。 这些 GoLang 代码将称为“链代码”或“cc”。 该链代码本身会创建一个Marble，并将其存储到链代码状态中。 该链代码本身可以将数据作为字符串存储在键/值对设置中。 因此，需要将字符串转化成为 JSON 对象，以便于在账本中存储更复杂的数据结构。
 
-具体实现过程如下：
+具体实现过程参见如下文档内容：
 
 1. [网络环境搭建](https://github.com/kevin-hf/kevin-marbles/blob/master/md/1.%20网络环境搭建.md)
 2. [编写链码](https://github.com/kevin-hf/kevin-marbles/blob/master/md/2.%20%E7%BC%96%E5%86%99%E9%93%BE%E7%A0%81.md)
