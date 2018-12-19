@@ -2,7 +2,7 @@
 
 首先我们先来看一下应用程序的实际运行效果：
 
-![example](./img/example.gif)
+![example](./md/img/example.gif)
 
 此应用程序将演示如何利用 Hyperledger Fabric 在许多Marble所有者之间转移Marble。 我们将在 Node.js 中使用一些 GoLang 代码完成此任务。 该应用程序的后端将在Hyperledger Fabric网络中运行的 GoLang 代码。 这些 GoLang 代码将称为“链代码”或“cc”。 该链代码本身会创建一个Marble，并将其存储到链代码状态中。 该链代码本身可以将数据作为字符串存储在键/值对设置中。 因此，需要将字符串转化成为 JSON 对象，以便于在账本中存储更复杂的数据结构。
 
